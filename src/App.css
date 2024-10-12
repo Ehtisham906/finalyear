@@ -1,0 +1,793 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+}
+
+/* Navbar */
+.logo>h1{
+  color: white;
+}
+.navbar {
+  background-color: #d32f2f;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #d32f2f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: #b71c1c;
+}
+
+.btn-secondary {
+  background-color: #555;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: #333;
+}
+
+/* Form Styles */
+form {
+  margin: 20px 0;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #d32f2f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #b71c1c;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+
+/* Hero Section */
+.hero {
+  background: #f8f8f8;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 48px;
+  color: #d32f2f;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.hero .buttons {
+  margin-top: 20px;
+}
+
+.buttons a {
+  margin-right: 10px;
+}
+
+.about-section {
+  padding: 40px 0;
+  text-align: center;
+  background-color: #fff;
+}
+
+.about-section h3 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 18px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+
+
+/* Donation Page */
+.donate-page {
+  padding: 40px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.donate-page h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #d32f2f;
+}
+
+.donate-page p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.donate-page form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form input,
+form select {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+form button {
+  padding: 10px 20px;
+}
+
+
+
+
+/* Request Page */
+.request-page {
+  padding: 40px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.request-page h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #d32f2f;
+}
+
+.request-page p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.request-page form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form input,
+form select {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+form button {
+  padding: 10px 20px;
+}
+
+
+
+/* About Page */
+.about-page {
+  padding: 40px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.about-page h1 {
+  font-size: 36px;
+  color: #d32f2f;
+  margin-bottom: 20px;
+}
+
+.about-page p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+
+
+/* Contact Page */
+.contact-page {
+  padding: 40px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.contact-page h1 {
+  font-size: 36px;
+  color: #d32f2f;
+  margin-bottom: 20px;
+}
+
+.contact-page p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.contact-page form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form input,
+form textarea {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+form textarea {
+  height: 150px;
+}
+
+form button {
+  padding: 10px 20px;
+}
+
+
+
+
+/* Footer Styles */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+
+/* Common Section Styles */
+section {
+  padding: 50px 20px;
+}
+
+h1, h2, h3 {
+  color: #d32f2f;
+}
+
+p {
+  color: #333;
+}
+
+
+
+
+/* Navbar Flexbox for Responsive Layout */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  padding: 1rem;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap; /* Wrap nav links on small screens */
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column; /* Stack menu items vertically on mobile */
+    align-items: center;
+  }
+
+  .navbar ul li {
+    margin: 10px 0;
+  }
+}
+
+
+
+/* Flexbox for Sections */
+section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 50px 20px;
+}
+
+.about-section, .donate-page, .request-page, .contact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Example for two-column layout */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container .column {
+  flex: 1;
+  margin: 10px;
+}
+
+/* For smaller screens, make it a single column */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container .column {
+    width: 100%;
+  }
+}
+
+
+
+
+/* Large Screens */
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+
+  .hero h2 {
+    font-size: 48px;
+  }
+
+  .navbar {
+    padding: 1.5rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+
+  .hero h2 {
+    font-size: 36px;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar ul li {
+    margin: 10px 0;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+  }
+
+  .navbar ul li {
+    margin: 10px 0;
+  }
+
+  .buttons a {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+
+
+/* Responsive Form */
+form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 100%;
+  }
+
+  form input,
+  form select,
+  form textarea {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+
+
+
+/* Responsive Button Styles */
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* Responsive Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #d32f2f;
+  color: white;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar ul li {
+    margin: 10px 0;
+  }
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+  background-color: #d32f2f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .btn-primary, .btn-secondary {
+    width: 100%;
+  }
+}
+
+/* Forms */
+form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  form {
+    padding: 10px;
+  }
+}
+
+/* Sections */
+section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 50px 20px;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #f8f8f8;
+}
+
+.hero h2 {
+  font-size: 48px;
+  color: #d32f2f;
+}
+
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 28px;
+  }
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  text-align: center;
+  padding: 1rem;
+}
+footer > p{
+  color: white;
+}
+footer a{
+  color: #fff;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+
+/* Table CSS after requesting blood */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+td {
+  color: #333;
+}
+
+table {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+/* LogIn form CSS */
+
+.inputs .pswrd{
+  width: 105%;
+  height: 30px;
+  /* border-radius: 100px; */
+}
+
+.container {
+  background-color: #282c34;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  margin: 0 50px 0 30rem;
+
+}
+
+
+
+/* Container for the signup form */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Signup form box styling */
+.signup-box {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Form group styling */
+.signup-form .form-group {
+  margin-bottom: 20px;
+}
+
+/* Label styling */
+.signup-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input field styling */
+.signup-form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Focus effect on input fields */
+.signup-form input:focus {
+  border-color: #007bff;
+}
+
+/* Submit button styling */
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect on submit button */
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Success message styling */
+.success-message {
+  color: #28a745;
+  font-size: 18px;
+  text-align: center;
+}
