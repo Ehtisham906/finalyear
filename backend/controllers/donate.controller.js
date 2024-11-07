@@ -8,8 +8,8 @@ export const donateBlood = async (req, res) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail', // Change this if using a different email service
         auth: {
-            user: 'ehtishamzahid039@gmail.com', // Your email
-            pass: 'fesc gkqz grdh tzmj', // Your email password or app password
+            user: process.env.email, // Your email
+            pass: process.env.pass, // Your email password or app password
         },
     });
 
