@@ -33,7 +33,7 @@ const Signup = () => {
       }
       setLoading(false);
       setError(null);
-      navigate('/login')
+      navigate('/sign-in')
     } catch (error) {
       setLoading(false);
       setError(error.message);
@@ -49,6 +49,9 @@ const Signup = () => {
       <input type="text" placeholder='username' className='border p-3 rounded-lg' id='username' onChange={handleChange} />
       <input type="email" placeholder='Email' className='border p-3 rounded-lg' id='email' onChange={handleChange} />
       <input type="password" placeholder='Password' className='border p-3 rounded-lg' id='password' onChange={handleChange} />
+      <input type="address" placeholder='Address' className='border p-3 rounded-lg' id='address' onChange={handleChange} />
+      <input type="bloodType" placeholder='Blood Type' className='border p-3 rounded-lg' id='bloodType' onChange={handleChange} />
+      <input type="phoneNumber" placeholder='Phone Number' className='border p-3 rounded-lg' id='phoneNumber' onChange={handleChange} />
 
       <button disabled={loading} className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>
         {loading ? 'Loading...' : 'Sign Up'}

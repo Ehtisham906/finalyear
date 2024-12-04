@@ -16,7 +16,7 @@ import {
   deleteUserSuccess,
   signOutUserStart
 } from '../redux/user/userSlice';
-import { useDispatch } from 'react-redux'; 
+import { useDispatch } from 'react-redux';
 
 
 export default function Profile() {
@@ -64,6 +64,7 @@ export default function Profile() {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
+  console.log("id",currentUser._id)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -73,6 +74,7 @@ export default function Profile() {
         headers: {
           'Content-Type': 'application/json'
         },
+        credentials:'include',
         body: JSON.stringify(formData),
       });
       const data = await res.json();
@@ -80,7 +82,6 @@ export default function Profile() {
         dispatch(updateUserFaliure(data.message));
         return;
       }
-
       dispatch(updateUserSuccess(data));
       setUpdateSuccess(true);
 
@@ -125,7 +126,7 @@ export default function Profile() {
     } catch (error) {
       dispatch(deleteUserFailure());
     }
-  } 
+  }
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
@@ -152,6 +153,8 @@ export default function Profile() {
         <input type="text" placeholder='username' defaultValue={currentUser.username} id='username' className='border p-3 rounded-lg' onChange={handleChange} />
         <input type="email" placeholder='email' defaultValue={currentUser.email} id='email' className='border p-3 rounded-lg' onChange={handleChange} />
         <input type="password" placeholder='password' id='password' className='border p-3 rounded-lg' onChange={handleChange} />
+        <input type="address" placeholder='Address' id='address' className='border p-3 rounded-lg' onChange={handleChange} />
+        <input type="phoneNumber" placeholder='Phone Number' id='phoneNumber' className='border p-3 rounded-lg' onChange={handleChange} />
         <button disabled={loading} className='bg-primary text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'>{loading ? "Loading" : "Update"}</button>
       </form>
       <div className='flex justify-between mt-5'>

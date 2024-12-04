@@ -4,11 +4,14 @@ import dotenv from 'dotenv';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import donateRouter from './routes/donate.route.js';
-import listingRouter from './routes/listing.route.js';
+
 import registerBloodRouter from './routes/register.route.js';
+import contact from './routes/contact.route.js';
 import cookieParser from "cookie-parser";
 import path from "path";
 import cors from "cors";
+import User from "./models/user.model.js";
+import DonorList from "./models/donor.list.model.js";
 
 
 dotenv.config();
@@ -18,7 +21,8 @@ const app = express();
 app.use(cors({
     origin: 'http://localhost:3000',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true, // Allow cookies to be sent with requests
 }));
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
@@ -27,13 +31,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log(err);
 })
 
-
-
-
 const __dirname = path.resolve();
-
-
-
 
 app.use(express.json());
 
@@ -49,9 +47,32 @@ app.get("/", (req, res) => {
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
-app.use("/api/listing", listingRouter);
+
 app.use("/api/donate", donateRouter);
 app.use("/api/registerBlood", registerBloodRouter);
+app.use("/api/contact", contact);
+
+
+
+app.get('/usernames', async (req, res, next) => {
+
+    const { page = 1, limit = 10 } = req.query; // Defaults: page 1, 10 users per page
+    try {
+        const users = await DonorList.find({}, { password: 0 })
+            .skip((page - 1) * limit)
+            .limit(parseInt(limit));
+
+        const totalUsers = await DonorList.countDocuments();
+        res.status(200).json({
+            users,
+            totalUsers,
+            totalPages: Math.ceil(totalUsers / limit),
+            currentPage: page
+        });
+    } catch (error) {
+        next(error);
+    }
+});
 
 // app.use(express.static(path.join(__dirname, '/frontend/dist')));
 // app.get('*', (req, res) => {

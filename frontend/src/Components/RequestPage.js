@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-
-
+import React, { useState, useEffect } from 'react';
 
 const RequestPage = () => {
-  // Define the 'submitted' state and 'setSubmitted' function
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -11,14 +8,30 @@ const RequestPage = () => {
     contactNumber: '',
     bloodType: '',
   });
+  const [userLocation, setUserLocation] = useState({ lat: 0, lng: 0 });
+
+  useEffect(() => {
+    // Fetch the user's location using the Geolocation API
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        (error) => console.error('Error fetching location:', error)
+      );
+    }
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
-  // Define the 'handleSubmit' function
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -39,96 +52,151 @@ const RequestPage = () => {
     }
 
     setSubmitted(true);
-
   };
 
-
-  // const RequestPage = () => {
   return (
     <div className="request-page">
       <h1>Request Blood</h1>
       {!submitted ? (
-        <form id='loginform' onSubmit={handleSubmit} method='post'>
+        <form onSubmit={handleSubmit}>
           <p>If you are in urgent need of blood, please fill out the form below to make a request.</p>
-          <label>
-            Please enter your full name:
-            <input type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              required />
-          </label>
-          <label>
-            Hospital/Clinic Name:
-            <input type="text"
-              name="hospital"
-              value={formData.hospital}
-              onChange={handleChange}
-              required />
-          </label>
-          <br />
-          <label>
-            Contact Number:
-            <input type="number"
-              name="contactNumber"
-              value={formData.contactNumber}
-              onChange={handleChange}
-              required />
-          </label>
-          <br />
-          <label>
-            Blood Type Required:
-            <select
-              name="bloodType"
-              value={formData.bloodType}
-              onChange={handleChange}
-              required>
-              <option value="A+">A+</option>
-              <option value="A-">A-</option>
-              <option value="B+">B+</option>
-              <option value="B-">B-</option>
-              <option value="O+">O+</option>
-              <option value="O-">O-</option>
-              <option value="AB+">AB+</option>
-              <option value="AB-">AB-</option>
-            </select>
-          </label>
-          <br />
-          <button type="submit">Submit Request</button>
+          <div className="form-group">
+            <label>
+              Full Name:
+              <input
+                type="text"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                required
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label>
+              Hospital/Clinic Name:
+              <input
+                type="text"
+                name="hospital"
+                value={formData.hospital}
+                onChange={handleChange}
+                required
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label>
+              Contact Number:
+              <input
+                type="text"
+                name="contactNumber"
+                value={formData.contactNumber}
+                onChange={handleChange}
+                required
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label>
+              Blood Type Required:
+              <select
+                name="bloodType"
+                value={formData.bloodType}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select Blood Type</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </select>
+            </label>
+          </div>
+          <button type="submit" className="btn-submit">Submit Request</button>
         </form>
       ) : (
-        <div>
-          {/* <h3 className="text">Blood Request Submitted</h3> */}
-          <p>Here is the list of blood groups with name and contact which you need.</p>
-          <table>
-            <tr>
-              <th>Name</th>
-              <th>Contact Number</th>
-              <th>Address</th>
-              <th>Blood Group</th>
-            </tr>
-            <tr>
-              <td>Adnan Ali Shah</td>
-              <td>123-456-7890</td>
-              <td>123 Main St, Cityville</td>
-              <td>O+</td>
-            </tr>
-            <tr>
-              <td>Wajid Ali</td>
-              <td>987-654-3210</td>
-              <td>456 Elm St, Townsville</td>
-              <td>A-</td>
-            </tr>
-            <tr>
-              <td>Murtaza</td>
-              <td>555-123-4567</td>
-              <td>789 Oak St, Villagecity</td>
-              <td>B+</td>
-            </tr>
+        <div className="confirmation">
+          <h2>Blood Request Submitted</h2>
+          <p>Here is a list of donors with the required blood type. Please contact them directly.</p>
+          <table className="donor-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Contact Number</th>
+                <th>Address</th>
+                <th>Blood Group</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Adnan Ali Shah</td>
+                <td>03165238384</td>
+                <td>Prince Colony jutyal Gilgit</td>
+                <td>O+</td>
+              </tr>
+              <tr>
+                <td>Wajid Ali</td>
+                <td>03555552869</td>
+                <td>Near National Bakers Baig Market Danyore Gilgit</td>
+                <td>A-</td>
+              </tr>
+              <tr>
+                <td>Murtaza</td>
+                <td>03405167534</td>
+                <td>Globe chock near karakoram international university gilgit</td>
+                <td>B+</td>
+              </tr>
+            </tbody>
           </table>
         </div>
-      )
-      }
+      )}
+      {/* Map Section */}
+      <div className="map-container">
+        <h2>Nearby Donor Locations</h2>
+        <iframe
+          id="waze-map"
+          src={`https://embed.waze.com/iframe?zoom=14&lat=${userLocation.lat}&lon=${userLocation.lng}`}
+          width="600"
+          height="400"
+          allowFullScreen
+          style={{ border: 0 }}
+        ></iframe>
+      </div>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-container">
+          <div className="footer-about">
+            <h4>About Us</h4>
+            <p>
+              Blood Bank Management System connects donors and recipients to ensure timely blood supply. Join us in saving lives.
+            </p>
+          </div>
+          <div className="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/contact">Contact Us</a></li>
+              <li><a href="/donate">Donate Blood</a></li>
+              <li><a href="/request">Request Blood</a></li>
+            </ul>
+          </div>
+          <div className="footer-contact">
+            <h4>Contact Info</h4>
+            <p>Email: support@bloodbank.org</p>
+            <p>Phone: +1 (555) 123-4567</p>
+            <p>Address: 123 Blood Drive, Heartsville</p>
+          </div>
+          <div className="footer-bottom">
+            <p>&copy; 2024 Blood Bank Management System. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
